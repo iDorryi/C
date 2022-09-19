@@ -1,6 +1,6 @@
 ﻿Console.WriteLine("Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь:");
 
-Console.WriteLine("Введите количество чисел массива" + "\t");
+Console.WriteLine("Введите количество чисел массива:" + "\t");
 int M = Convert.ToInt32(Console.ReadLine());
 int size = M; 
 int[] array = new int[M];
