@@ -37,7 +37,7 @@ int[] FindArray(int[,] resultMatrix, int row, int col)
         return new int[] {1, resultMatrix[row,col] };
     }
 }
- int[] res = FindArray(resultMatrix, 11, 23);
+ int[] res = FindArray(resultMatrix, 1, 2);
  Console.WriteLine(res[0]);
  if (res[0] == -1)
  {
