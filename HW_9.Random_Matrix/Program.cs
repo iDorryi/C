@@ -11,7 +11,7 @@ double[,] GetMatrix (int m, int n)
   {
     for ( int j = 0; j < n; j++ )
     {
-        matrix[i,j] = new Random().NextDouble() * 10;
+        matrix[i,j] = new Random().NextDouble() * 10 + new Random().NextDouble() * -10; // or double value = Math.Round(new Random().NextDouble()*10 -5, 2);
     }
   }
   return matrix;
