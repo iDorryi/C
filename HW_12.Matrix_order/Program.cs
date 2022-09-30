@@ -12,7 +12,7 @@ int columns = Get("Введите количество столбцов: ");
  Console.WriteLine();
  
 
- int[,] SortArray(int[,] array)
+int[,] SortArray(int[,] array)
  {
      for (int i = 0; i < array.GetLength(0); i++)
      {

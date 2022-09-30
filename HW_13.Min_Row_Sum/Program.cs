@@ -1,44 +1,84 @@
 ﻿Console.WriteLine("Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов:");
-// 1. Get the Matrix with the same lenght for every column and row;
-// 2. Fill it
-// 3. Print the Matrix
-// 4. Create the input method. Let it be called "Input"
-// 5. Find the summ in every row in another method;
-// 6. Find and output the row with the least summ.
+
 int rows = Input("Введите количество строк: ");
 int columns = Input("Введите количество столбцов: ");
- int Input (string message)
+Console.WriteLine("Это случайно сгенерированный массив:");
+
+int Input(string message)
  {
      Console.Write(message);
      return Convert.ToInt32(Console.ReadLine()!);
  }
 
- int [,] FillArray (int[,] array)
+ int[,] matrix = new int[rows,columns];
+ matrix = FillMatrix(matrix);
+ PrintMatrix(matrix);
+ Console.WriteLine("Сумма чисел строк двумерного массива: ");
+ int[] SumInLinesArray = CountSumInRows(matrix);
+ PrintSumInRows(SumInLinesArray);
+ Console.WriteLine();
+ Console.WriteLine($"№ строки с наибольшей суммой: {GetMaxRowSum(SumInLinesArray) + 1}");
+
+
+ int[,] FillMatrix (int[,] matrix)
  {
-     Random rand = new Random();
-     for (int i = 0; i < array.GetLength(0); i++)
+     for(int i = 0; i < matrix.GetLength(0); i++)
      {
-         for (int j = 0; j < array.GetLength(1); j++)
+             for (int j = 0; j < matrix.GetLength(1); j++)
          {
-             array[i, j] = rand.Next(1, 11);
+             matrix[i,j] = new Random().Next(1,9);
          }
      }
-     return array;
+     return matrix;
  }
 
- void PrintArray (int[,] array)
+ void PrintMatrix(int[,] matrix)
  {
-     for (int i = 0; i < array.GetLength(0); i++)
+     for(int i = 0; i < matrix.GetLength(0); i++)
      {
-         for (int j = 0; j < array.GetLength(1); j++)
+         for (int j = 0; j < matrix.GetLength(1); j++)
          {
-             Console.Write(array[i, j] + " ");
+             Console.Write($"{matrix[i,j]} ");
          }
          Console.WriteLine();
      }
  }
 
-int[,] matrix = new int[rows, columns];
-int[,] ResultArray = FillArray(matrix);
- PrintArray(ResultArray);
-   
+ int [] CountSumInRows(int[,] matrix)
+ {
+     int [] sumInLinesResults = new int[matrix.GetLength(0)];
+     int sum = 0;
+     for (int i = 0; i < matrix.GetLength(0); i++)
+     {
+         for (int j = 0; j < matrix.GetLength(1); j++)
+         {
+             sum += matrix[i,j];
+         }
+         sumInLinesResults[i] = sum;
+         sum = 0;
+     }
+     return sumInLinesResults;
+ }
+
+ void PrintSumInRows(int[] array)
+ {
+     for (int i = 0; i < array.Length; i ++)
+     {
+         Console.Write($"{i+1} - {array[i]} ");
+     }
+ }
+
+ int GetMaxRowSum(int[] array)
+ {
+     int max = 0;
+     int result = 0;
+     for (int i = 0; i < array.Length; i++)
+     {
+         if (max < array[i])
+         {
+             max = array[i];
+             result = i;
+         }
+     }
+     return result;
+ }
