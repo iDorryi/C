@@ -17,7 +17,7 @@ int Input(string message)
  int[] SumInLinesArray = CountSumInRows(matrix);
  PrintSumInRows(SumInLinesArray);
  Console.WriteLine();
- Console.WriteLine($"№ строки с наибольшей суммой: {GetMaxRowSum(SumInLinesArray) + 1}");
+ Console.WriteLine($"Номер строки с наименьшей суммой: {GetMinRowsSum(SumInLinesArray) + 1}");
 
 
  int[,] FillMatrix (int[,] matrix)
@@ -68,16 +68,16 @@ int Input(string message)
      }
  }
 
- int GetMaxRowSum(int[] array)
+ int GetMinRowsSum(int[] array)
  {
-     int max = 0;
+     int min = array[0];
      int result = 0;
      for (int i = 0; i < array.Length; i++)
      {
-         if (max < array[i])
-         {
-             max = array[i];
-             result = i;
+         if (array[i] < min)
+
+         { min = array[i];
+           result = i;
          }
      }
      return result;
