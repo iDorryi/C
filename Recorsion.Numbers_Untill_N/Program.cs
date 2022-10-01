@@ -10,8 +10,8 @@
 
 Console.WriteLine("Введите M");
 Console.WriteLine("Введите N");
-int N = Convert.ToInt32(Console.ReadLine());
 int M = Convert.ToInt32(Console.ReadLine());
+int N = Convert.ToInt32(Console.ReadLine());
 string NumbersUntillN ( int M, int N)
 {
     if(M == N)
@@ -19,3 +19,5 @@ string NumbersUntillN ( int M, int N)
     return (M + "," + NumbersUntillN(M + 1, N ));
 }
 Console.WriteLine($"Номера от M до N это: {NumbersUntillN(M, N)}");
+
+
